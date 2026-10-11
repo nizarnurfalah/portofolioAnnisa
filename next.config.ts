@@ -2,12 +2,17 @@ import type { NextConfig } from "next";
 // @ts-expect-error - next-pwa doesn't have types
 import withPWA from "next-pwa";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
   turbopack: {},
-  output: "standalone",
+  output: "export",
+  basePath: basePath,
+  trailingSlash: true,
   images: {
+    unoptimized: true,
     dangerouslyAllowSVG: true,
     contentDispositionType: "inline",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",

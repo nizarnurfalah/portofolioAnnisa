@@ -46,6 +46,8 @@ export interface EducationItem {
   achievements?: string[];
 }
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export const personalInfo = {
   fullName: "Annisa Haura Salshabira",
   nickname: "Caca",
@@ -55,7 +57,7 @@ export const personalInfo = {
   email: "haurasalshabira@gmail.com",
   linkedin: "https://www.linkedin.com/in/annisahaurasalshabira",
   instagram: "https://www.instagram.com/annisahauraaa/",
-  cvUrl: "/cv/Annisa-Haura-Salshabira-CV.pdf",
+  cvUrl: `${basePath}/cv/Annisa-Haura-Salshabira-CV.pdf`,
   summary:
     "Lulusan Sarjana Terapan Kebidanan dari Universitas Padjadjaran dengan pengalaman komprehensif melalui praktik klinik di rumah sakit rujukan provinsi, puskesmas, serta asuhan kebidanan komunitas. Terampil dalam asuhan maternal & neonatal (fisiologis & patologis), pemeriksaan diagnostik klinis, konseling pasien yang empatik, serta manajemen program kesehatan masyarakat. Berdedikasi tinggi untuk memberikan pelayanan kebidanan yang aman, profesional, dan berpusat pada pasien.",
   stats: [
