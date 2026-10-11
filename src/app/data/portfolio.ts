@@ -46,7 +46,14 @@ export interface EducationItem {
   achievements?: string[];
 }
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+export const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+export const getAssetUrl = (path: string): string => {
+  if (!path) return "";
+  if (path.startsWith("http://") || path.startsWith("https://") || path.startsWith("data:")) return path;
+  const cleanPath = path.startsWith("/") ? path : `/${path}`;
+  return `${basePath}${cleanPath}`;
+};
 
 export const personalInfo = {
   fullName: "Annisa Haura Salshabira",
@@ -57,7 +64,7 @@ export const personalInfo = {
   email: "haurasalshabira@gmail.com",
   linkedin: "https://www.linkedin.com/in/annisahaurasalshabira",
   instagram: "https://www.instagram.com/annisahauraaa/",
-  cvUrl: `${basePath}/cv/Annisa-Haura-Salshabira-CV.pdf`,
+  cvUrl: getAssetUrl("/cv/Annisa-Haura-Salshabira-CV.pdf"),
   summary:
     "Lulusan Sarjana Terapan Kebidanan dari Universitas Padjadjaran dengan pengalaman komprehensif melalui praktik klinik di rumah sakit rujukan provinsi, puskesmas, serta asuhan kebidanan komunitas. Terampil dalam asuhan maternal & neonatal (fisiologis & patologis), pemeriksaan diagnostik klinis, konseling pasien yang empatik, serta manajemen program kesehatan masyarakat. Berdedikasi tinggi untuk memberikan pelayanan kebidanan yang aman, profesional, dan berpusat pada pasien.",
   stats: [
@@ -122,7 +129,7 @@ export const clinicalSkills: ClinicalSkill[] = [
   },
 ];
 
-export const clinicalExperiences: Experience[] = [
+const rawClinicalExperiences: Experience[] = [
   {
     id: "rsud-syamsudin",
     role: "Mahasiswa Magang Kebidanan Klinik",
@@ -202,7 +209,14 @@ export const clinicalExperiences: Experience[] = [
   },
 ];
 
-export const projectsData: ProjectItem[] = [
+export const clinicalExperiences: Experience[] = rawClinicalExperiences.map(
+  (exp) => ({
+    ...exp,
+    images: exp.images.map(getAssetUrl),
+  })
+);
+
+const rawProjectsData: ProjectItem[] = [
   {
     id: "buku-saku-mpasi",
     title: "Buku Saku MP-ASI (Makanan Pendamping ASI)",
@@ -269,7 +283,12 @@ export const projectsData: ProjectItem[] = [
   },
 ];
 
-export const certificationsData: Certification[] = [
+export const projectsData: ProjectItem[] = rawProjectsData.map((project) => ({
+  ...project,
+  images: project.images.map(getAssetUrl),
+}));
+
+const rawCertificationsData: Certification[] = [
   {
     id: "cert-rshs",
     title: "Orientasi Rumah Sakit Mahasiswa",
@@ -312,7 +331,15 @@ export const certificationsData: Certification[] = [
   },
 ];
 
-export const organizationExperiences: Experience[] = [
+export const certificationsData: Certification[] = rawCertificationsData.map(
+  (cert) => ({
+    ...cert,
+    image: cert.image ? getAssetUrl(cert.image) : undefined,
+    pdfUrl: cert.pdfUrl ? getAssetUrl(cert.pdfUrl) : undefined,
+  })
+);
+
+const rawOrganizationExperiences: Experience[] = [
   {
     id: "naviyara",
     role: "Ketua Divisi Fasilitator – Naviyara",
@@ -378,6 +405,13 @@ export const organizationExperiences: Experience[] = [
     images: [],
   },
 ];
+
+export const organizationExperiences: Experience[] = rawOrganizationExperiences.map(
+  (org) => ({
+    ...org,
+    images: org.images.map(getAssetUrl),
+  })
+);
 
 export const educationData: EducationItem[] = [
   {

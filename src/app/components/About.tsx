@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { personalInfo } from "../data/portfolio";
+import { personalInfo, getAssetUrl } from "../data/portfolio";
 
 export default function About() {
   const coreValues = [
@@ -110,7 +110,7 @@ export default function About() {
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-pink-100 shadow-md sm:shadow-xl bg-white p-2.5 sm:p-3.5 max-w-sm mx-auto lg:max-w-none">
               <div className="relative w-full aspect-4/3 sm:aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-stone-100">
                 <Image
-                  src="/fotoprfil.jpg"
+                  src={getAssetUrl("/fotoprfil.jpg")}
                   alt="Annisa Haura Salshabira, S.Tr.Keb - Universitas Padjadjaran"
                   fill
                   sizes="(max-width: 1024px) 100vw, 450px"
