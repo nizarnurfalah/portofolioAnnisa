@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import { getAssetUrl } from "../data/portfolio";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -16,9 +18,9 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Tentang", href: "#about" },
-    { name: "Keahlian & Pengalaman", href: "#showcase" },
-    { name: "Proyek & Edukasi", href: "#projects" },
+    { name: "About", href: "#about" },
+    { name: "Experience & Competencies", href: "#showcase" },
+    { name: "Projects", href: "#projects" },
   ];
 
   return (
@@ -29,25 +31,32 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
       role="navigation"
-      aria-label="Navigasi Utama"
+      aria-label="Main Navigation"
     >
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo / Personal Brand */}
+          {/* Logo / Personal Brand (from Page 1 of PDF) */}
           <a
             href="#"
             className="flex items-center gap-2.5 text-xl font-bold tracking-tight group"
-            aria-label="Annisa Haura Salshabira - Beranda"
+            aria-label="Annisa Haura Salshabira - Home"
           >
-            <div className="w-9 h-9 rounded-full bg-pink-50 border border-pink-200 flex items-center justify-center text-pink-600 font-extrabold text-sm group-hover:bg-pink-600 group-hover:text-white transition-all duration-300 shadow-2xs">
-              AH
+            <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-pink-200 shadow-xs shrink-0 group-hover:scale-105 group-hover:border-pink-500 transition-all duration-300">
+              <Image
+                src={getAssetUrl("/fotononformal/Annisa Haura Salshabira-3.jpg")}
+                alt="Annisa Haura Salshabira"
+                fill
+                className="object-cover object-top"
+                sizes="40px"
+                unoptimized
+              />
             </div>
             <div className="flex flex-col">
               <span className="text-stone-900 group-hover:text-pink-600 transition-colors duration-300 font-bold text-base leading-tight">
-                Annisa Haura
+                Annisa Haura Salshabira
               </span>
               <span className="text-[10px] text-pink-700/80 tracking-wider uppercase font-semibold">
-                Kebidanan FK UNPAD
+                Portfolio
               </span>
             </div>
           </a>
@@ -71,7 +80,7 @@ export default function Navbar() {
               href="#contact"
               className="px-5 py-2.5 bg-pink-600 text-white text-sm font-semibold rounded-full hover:bg-pink-700 transition-all duration-300 hover:shadow-md hover:scale-[1.02]"
             >
-              Hubungi Saya
+              Let&apos;s Connect
             </a>
           </div>
 
@@ -79,7 +88,7 @@ export default function Navbar() {
           <button
             className="md:hidden p-2 rounded-lg text-stone-700 hover:bg-pink-50 transition-colors"
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? "Tutup menu" : "Buka menu"}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
           >
@@ -113,7 +122,7 @@ export default function Navbar() {
             menuOpen ? "max-h-80 mt-4 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="flex flex-col gap-3 py-4 border-t border-pink-100 bg-white/90 rounded-2xl p-4 mt-2 shadow-xs">
+          <div className="flex flex-col gap-3 py-4 border-t border-pink-100 bg-white/95 rounded-2xl p-4 mt-2 shadow-xs">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -129,7 +138,7 @@ export default function Navbar() {
               className="mt-2 px-5 py-2.5 bg-pink-600 text-white text-sm font-semibold rounded-full hover:bg-pink-700 transition-colors duration-300 text-center"
               onClick={() => setMenuOpen(false)}
             >
-              Hubungi Saya
+              Let&apos;s Connect
             </a>
           </div>
         </div>

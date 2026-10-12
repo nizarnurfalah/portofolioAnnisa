@@ -10,10 +10,11 @@ export interface Experience {
   institution: string;
   period: string;
   location: string;
-  type: "Klinik" | "Komunitas" | "Organisasi";
+  type: "Clinical" | "Community" | "Organization";
+  badge: string;
+  summaryDescription?: string;
   description: string[];
   images: string[];
-  badge: string;
 }
 
 export interface ProjectItem {
@@ -35,6 +36,9 @@ export interface Certification {
   credentialId?: string;
   image?: string;
   pdfUrl?: string;
+  credentialUrl?: string;
+  driveUrl?: string;
+  badge?: string;
 }
 
 export interface EducationItem {
@@ -42,6 +46,7 @@ export interface EducationItem {
   institution: string;
   faculty?: string;
   period: string;
+  gpa?: string;
   description: string;
   achievements?: string[];
 }
@@ -58,73 +63,117 @@ export const getAssetUrl = (path: string): string => {
 export const personalInfo = {
   fullName: "Annisa Haura Salshabira",
   nickname: "Caca",
-  role: "Sarjana Terapan Kebidanan",
-  institution: "Fakultas Kedokteran, Universitas Padjadjaran",
-  location: "Bandung, Jawa Barat, Indonesia",
+  role: "Bachelor of Applied Midwifery | Public Health | Healthcare Administration & Operations",
+  roleShort: "Bachelor of Applied Science in Midwifery",
+  institution: "Faculty of Medicine, Universitas Padjadjaran",
+  location: "Bandung, West Java, Indonesia",
+  domicileText: "Based in Bandung, West Java, Indonesia. Open for relocation and professional placement across various regions.",
   email: "haurasalshabira@gmail.com",
   linkedin: "https://www.linkedin.com/in/annisahaurasalshabira",
   instagram: "https://www.instagram.com/annisahauraaa/",
-  cvUrl: getAssetUrl("/cv/Annisa-Haura-Salshabira-CV.pdf"),
+  cvUrl: "https://drive.google.com/file/d/1JADyuOp9wWJJPfHrcxsXoL1HIrzKh5Jt/view?usp=sharing",
+  journalUrl: "https://journal.umpr.ac.id/index.php/pengabdianmu/article/view/10505",
+  journalDriveUrl: "https://drive.google.com/file/d/1S6yS9HR970C1IOlaBpWH9dLWe69ZTP6h/view?usp=sharing",
   summary:
-    "Lulusan Sarjana Terapan Kebidanan dari Universitas Padjadjaran dengan pengalaman komprehensif melalui praktik klinik di rumah sakit rujukan provinsi, puskesmas, serta asuhan kebidanan komunitas. Terampil dalam asuhan maternal & neonatal (fisiologis & patologis), pemeriksaan diagnostik klinis, konseling pasien yang empatik, serta manajemen program kesehatan masyarakat. Berdedikasi tinggi untuk memberikan pelayanan kebidanan yang aman, profesional, dan berpusat pada pasien.",
-  stats: [
-    { value: "4+", label: "Stase Klinik & Komunitas" },
-    { value: "100%", label: "Kelulusan Mentoring Naviyara" },
-    { value: "HAKI", label: "Hak Cipta Kemenkumham RI" },
-    { value: "UNPAD", label: "Pendidikan Bidan Jalur Langsung" },
+    "A healthcare-trained professional with experience in healthcare services, administrative documentation, research, and organizational coordination. Experienced across 3 healthcare institutions, with 1 year in student development at HIMA Kebidanan Unpad and 5 months as Head of the Facilitator Division at NAVIYARA, leading 8 facilitators and coordinating a program for 39 incoming students. Academic achievements include a scientific publication and registered intellectual property (HAKI).\n\nAspiring to build a career in healthcare administration, medical claims verification, and corporate operations, I aim to apply my analytical, organizational, and communication skills to support accurate documentation and efficient workflows.",
+  highlights: [
+    { value: "3.90 / 4.00", label: "GPA from Universitas Padjadjaran" },
+    { value: "39+ Participants", label: "Managed & Mentored in Programs" },
+    { value: "8 Team Members", label: "Coordinated as Head of Division" },
+    { value: "HAKI & Publication", label: "Official Intellectual Property & Peer-Reviewed Journal" },
   ],
 };
 
-export const clinicalSkills: ClinicalSkill[] = [
+export const nonFormalPhotos = [
   {
-    category: "Pelayanan Kebidanan Fisiologis & Patologis",
+    url: getAssetUrl("/fotononformal/Annisa Haura Salshabira-3.jpg"),
+    caption: "Academic & Campus Moments",
+  },
+  {
+    url: getAssetUrl("/fotononformal/Annisa Haura Salshabira-44.jpg"),
+    caption: "Student Community Engagement",
+  },
+  {
+    url: getAssetUrl("/fotononformal/Annisa Haura Salshabira-45.jpg"),
+    caption: "Mentorship & Leadership",
+  },
+  {
+    url: getAssetUrl("/fotononformal/Annisa Haura Salshabira-47.jpg"),
+    caption: "Cross-Disciplinary Teamwork",
+  },
+  {
+    url: getAssetUrl("/fotononformal/Annisa Haura Salshabira-48.jpg"),
+    caption: "Healthcare & Campus Activities",
+  },
+];
+
+export const educationData: EducationItem[] = [
+  {
+    degree: "Bachelor of Applied Science in Midwifery",
+    institution: "Universitas Padjadjaran",
+    faculty: "Faculty of Medicine · Direct-Entry Midwifery Program",
+    period: "Aug 2022 – Jun 2026",
+    gpa: "GPA: 3.90/4.00 (Cumlaude)",
     description:
-      "Penanganan asuhan kebidanan menyeluruh bagi ibu hamil, bersalin, nifas, dan bayi baru lahir.",
-    items: [
-      "Antenatal Care (ANC) Terpadu",
-      "Asuhan Persalinan Normal (APN)",
-      "Postnatal Care (PNC) & Asuhan Nifas",
-      "Asuhan Bayi Baru Lahir & Neonatus",
-      "Pelayanan Keluarga Berencana (KB)",
-      "Pelayanan Imunisasi Dasar Lengkap",
-      "Bantuan Prosedur Kuretase",
+      "Comprehensive academic and clinical education covering maternal-neonatal health, health administration, clinical diagnostics, and family-centered community health.",
+    achievements: [
+      "Official Intellectual Property (HAKI) from Ministry of Law & Human Rights RI for MP-ASI Handbook",
+      "Head of Facilitator Division at Naviyara Midwifery Student Orientation",
+      "Author of published peer-reviewed community health journal (PengabdianMu, 2026)",
     ],
   },
   {
-    category: "Keterampilan Diagnostik & Medis",
+    degree: "Natural Sciences (MIPA)",
+    institution: "SMA Kartika XIX-1 Bandung",
+    period: "Jun 2019 – May 2022",
+    gpa: "Final Grade: 89.87/100.00",
     description:
-      "Pengoperasian alat pemantauan janin dan diagnostik medis serta kepatuhan prosedur keselamatan.",
+      "Graduated with honors in Natural Sciences. Actively engaged in school cultural and publication initiatives.",
+  },
+];
+
+export const skillsAndCompetencies = [
+  {
+    category: "Administrative & Documentation",
+    description: "Standardized medical records, patient data filing, and administrative workflow governance.",
     items: [
-      "Pemeriksaan Cardiotocography (CTG)",
-      "Pemeriksaan Non-Stress Test (NST)",
-      "Perekaman Elektrokardiogram (EKG)",
-      "Prosedur Pencegahan & Pengendalian Infeksi (PPI)",
-      "Dokumentasi Rekam Medis Standar RS",
-      "Standar Keselamatan Pasien (Patient Safety)",
+      "Medical record documentation",
+      "Data collection and recordkeeping",
+      "Document organization",
+      "Patient information management",
     ],
   },
   {
-    category: "Konseling & Edukasi Kesehatan",
-    description:
-      "Komunikasi terapeutik dan pemberdayaan keluarga dalam pencegahan masalah kesehatan ibu & anak.",
+    category: "Data & Digital Tools",
+    description: "Proficiency in workplace productivity suites and data analytics software.",
     items: [
-      "Konseling Laktasi & Manajemen Menyusui",
-      "Edukasi Makanan Pendamping ASI (MPASI)",
-      "Deteksi Dini Gangguan Psikologis & Depresi Pasca Salin",
-      "Penyuluhan Kesehatan Reproduksi Remaja",
-      "Komunikasi Interpersonal & Terapeutik",
+      "Microsoft Office (Word, Excel, PowerPoint)",
+      "Google Workspace",
+      "Basic SPSS (Data Analysis)",
+      "Canva (Visual Communication)",
+      "Basic data reporting",
     ],
   },
   {
-    category: "Manajemen Administrasi & Alat Digital",
-    description:
-      "Kemampuan koordinasi acara, pelaporan medis, serta pemanfaatan perangkat lunak pendukung riset.",
+    category: "Healthcare Competencies",
+    description: "Patient-centered maternal-child clinical support, triage, and preventive health practices.",
     items: [
-      "Microsoft Office Specialist (Excel, Word, PowerPoint)",
-      "Google Workspace Collaboration",
-      "Desain Media Informasi Kesehatan (Canva)",
-      "Pengolahan Data Penelitian (SPSS Dasar)",
-      "Manajemen Kepanitiaan & Alur Acara",
+      "Clinical documentation",
+      "Maternal and child health services",
+      "Health education",
+      "Community health assessment",
+      "Patient safety and infection prevention",
+    ],
+  },
+  {
+    category: "Professional Skills",
+    description: "Core competencies supporting operational efficiency and collaborative success.",
+    items: [
+      "Cross-functional team coordination",
+      "Professional communication",
+      "High attention to detail",
+      "Time management & prioritization",
+      "Adaptability & continuous learning",
     ],
   },
 ];
@@ -132,17 +181,18 @@ export const clinicalSkills: ClinicalSkill[] = [
 const rawClinicalExperiences: Experience[] = [
   {
     id: "rsud-syamsudin",
-    role: "Mahasiswa Magang Kebidanan Klinik",
+    role: "Clinical Midwifery Internship",
     institution: "RSUD R. Syamsudin, SH. Sukabumi",
-    period: "April 2025 – Juni 2025 (3 Bulan)",
-    location: "Sukabumi, Jawa Barat",
-    type: "Klinik",
-    badge: "Rumah Sakit Rujukan",
+    period: "Apr 2025 – Jun 2025 (3 Months)",
+    location: "Sukabumi, West Java",
+    type: "Clinical",
+    badge: "Provincial Referral Hospital",
+    summaryDescription:
+      "Gained clinical experience across 4 service areas, handling 6+ obstetric and gynecological case types, including high-risk pregnancies and emergency conditions, while supporting continuous patient care in a dynamic hospital environment.",
     description: [
-      "Menangani asuhan kebidanan komprehensif untuk kasus obstetri dan ginekologi (fisiologis dan patologis).",
-      "Membantu tindakan prosedur kuretase dan pemeriksaan diagnostik penunjang, termasuk CTG, NST, dan EKG.",
-      "Berkolaborasi aktif dengan tim medis lintas profesi (dokter spesialis obgyn, perawat, anestesi) dalam tata laksana pasien.",
-      "Menyusun dokumentasi rekam medis secara teliti, rapi, dan tepat waktu sesuai standar akreditasi rumah sakit.",
+      "Assisted with clinical procedures and diagnostic examinations.",
+      "Coordinated with multidisciplinary healthcare teams to ensure accurate information flow and continuity of care.",
+      "Maintained timely clinical documentation while adhering to patient safety and infection prevention practices.",
     ],
     images: [
       "/Magang/Clinical Midwifery Intern RSUD R. Syamsudin, SH. Sukabumi · Magang/1788756910391.jpg",
@@ -152,17 +202,18 @@ const rawClinicalExperiences: Experience[] = [
   },
   {
     id: "puskesmas-padasuka",
-    role: "Mahasiswa Magang Kebidanan Klinik",
+    role: "Clinical Midwifery Internship",
     institution: "UPTD Puskesmas Padasuka Kota Bandung",
-    period: "Agustus 2024 – Oktober 2024 (3 Bulan)",
-    location: "Bandung, Jawa Barat",
-    type: "Klinik",
-    badge: "Pelayanan Primer",
+    period: "Aug 2024 – Oct 2024 (3 Months)",
+    location: "Bandung, West Java",
+    type: "Clinical",
+    badge: "Primary Healthcare Center",
+    summaryDescription:
+      "Supported maternal and child healthcare services, managing 30+ ANC visits, 5 deliveries, and 7 PNC visits, including patient assessments, documentation, and follow-ups.",
     description: [
-      "Melaksanakan asuhan kebidanan fisiologis secara mandiri dan komprehensif: Antenatal Care (ANC), pendampingan persalinan normal, nifas, dan perawatan bayi baru lahir.",
-      "Memberikan pelayanan Keluarga Berencana (KB) serta imunisasi dasar rutin pada bayi dan balita.",
-      "Menyampaikan edukasi kesehatan ibu dan anak (KIA) secara komunikatif dan ramah keluarga.",
-      "Melakukan pencatatan register kohort dan rekam medis digital/manual sesuai regulasi puskesmas.",
+      "Supported newborn care, immunization, KPSP screening, and family planning services.",
+      "Delivered maternal and child health education to promote preventive healthcare and improve patient understanding.",
+      "Maintained accurate patient records and coordinated with healthcare teams to support continuity of care.",
     ],
     images: [
       "/Magang/Clinical Midwifery Intern UPTD Puskesmas Padasuka Kota Bandung · Magang/1788755121646.jpg",
@@ -172,38 +223,42 @@ const rawClinicalExperiences: Experience[] = [
   },
   {
     id: "rshs-bandung",
-    role: "Mahasiswa Magang Keterampilan Dasar Kebidanan",
+    role: "Basic Midwifery Skills Internship",
     institution: "RSUP Dr. Hasan Sadikin Bandung (RSHS)",
-    period: "Juni 2023 – Juli 2023 (2 Bulan)",
-    location: "Bandung, Jawa Barat",
-    type: "Klinik",
-    badge: "RS Rujukan Nasional",
+    period: "Jun 2023 – Jul 2023 (2 Months)",
+    location: "Bandung, West Java",
+    type: "Clinical",
+    badge: "Top National Referral Hospital",
+    summaryDescription:
+      "Completed foundational clinical training in a hospital setting, gaining exposure to midwifery service workflows and patient care practices.",
     description: [
-      "Melakukan prosedur dasar kebidanan dengan mematuhi prinsip Patient Safety dan protokol Pencegahan dan Pengendalian Infeksi (PPI).",
-      "Mengelola dokumentasi rekam medis pasien serta berkoordinasi dengan perawat dan tenaga kesehatan lainnya dalam pelayanan rawat inap.",
-      "Mendapatkan sertifikat resmi orientasi rumah sakit mahasiswa dari Kemenkes RI / RSUP Dr. Hasan Sadikin.",
+      "Maintained accurate and organized medical records in accordance with healthcare documentation standards.",
+      "Coordinated patient information with healthcare teams to support clear communication and efficient information flow.",
+      "Followed established procedures for basic clinical tasks, patient safety, and infection prevention.",
     ],
     images: [
       "/Magang/Intern Basic Midwifery Skills Intern RSUP Dr. Hasan Sadikin Bandung · Magang/1788753108621.jpg",
-      "/Annisa_sertifikat/1788784213850.jpg",
+      "/Magang/Intern Basic Midwifery Skills Intern RSUP Dr. Hasan Sadikin Bandung · Magang/1788753108644.jpg",
     ],
   },
   {
-    id: "kebidanan-komunitas",
-    role: "Mahasiswa Magang Kebidanan Komunitas",
+    id: "unpad-komunitas",
+    role: "Community Midwifery Practice",
     institution: "Universitas Padjadjaran",
-    period: "Desember 2025 – Januari 2026 (2 Bulan)",
-    location: "Desa Cilayung, Sumedang, Jawa Barat",
-    type: "Komunitas",
-    badge: "Community Midwifery",
+    period: "Dec 2023 – Jan 2024 (2 Months)",
+    location: "Desa Cilayung, Sumedang, West Java",
+    type: "Community",
+    badge: "Community Health Placement",
+    summaryDescription:
+      "Participated in community-based healthcare activities, gaining experience in household assessments, community health needs identification, and planning appropriate follow-up actions.",
     description: [
-      "Melakukan pengkajian kesehatan ibu, anak, dan keluarga langsung secara door-to-door di lingkungan masyarakat pedesaan.",
-      "Menganalisis data masalah kesehatan keluarga dan merumuskan rencana tindak lanjut (RTL) berbasis pemecahan masalah.",
-      "Mengadakan kegiatan posyandu terpadu, pemantauan status gizi balita lewat KMS, serta penyuluhan pencegahan stunting.",
+      "Successfully implemented 9 community health intervention programs in collaboration with a student team.",
+      "Assessed 55 households to document community health needs and identify priority issues.",
+      "Contributed to measurable behavior changes through targeted community health education and interventions.",
     ],
     images: [
-      "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/1788845091019.jpg",
       "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/1788844787993.jpg",
+      "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/1788845091019.jpg",
       "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/1788845157776.jpg",
     ],
   },
@@ -218,30 +273,32 @@ export const clinicalExperiences: Experience[] = rawClinicalExperiences.map(
 
 const rawProjectsData: ProjectItem[] = [
   {
-    id: "buku-saku-mpasi",
-    title: "Buku Saku MP-ASI (Makanan Pendamping ASI)",
-    category: "Hak Cipta & Karya Ilmiah",
-    badge: "HAKI Kemenkumham RI",
+    id: "project-bhakti-kencana",
+    title: "Adolescent Health Education Outreach at SMK Bhakti Kencana Cileunyi",
+    category: "Health Promotion",
+    badge: "School Outreach",
     description:
-      "Karya buku edukasi panduan praktis pemberian makanan pendamping ASI bagi ibu dan balita yang telah terdaftar resmi memiliki Hak Cipta dari Kementerian Hukum dan HAM Republik Indonesia.",
+      "A school-based health education program designed to raise adolescents’ awareness of reproductive health, personal hygiene, and social risks affecting their well-being.",
     highlights: [
-      "Surat Pencatatan Ciptaan resmi No. 000643844 (Kemenkumham RI)",
-      "Pencipta bersama dosen dan tim kebidanan Universitas Padjadjaran",
-      "Panduan takaran nutrisi, higienitas, dan pencegahan malnutrisi pada masa MP-ASI",
+      "Served as Master of Ceremonies (MC), facilitating the flow of the educational program.",
+      "Facilitated educational sessions on early marriage, premarital sex, and reproductive health.",
+      "Supported awareness-building on personal hygiene, pornography prevention, and sexual harassment.",
     ],
-    images: ["/Project/Buku Saku MPASI/1788919234101.jpg"],
+    images: [
+      "/Project/Adolescent Health Education Outreach at SMK Bhakti Kencana Cileunyi/1788922924066.jpg",
+    ],
   },
   {
-    id: "anc-padjadjaran",
-    title: "Pelayanan Antenatal Care (ANC) Terpadu",
-    category: "Praktik Klinis Kebidanan",
-    badge: "Klinik Padjadjaran",
+    id: "project-padjadjaran-clinic",
+    title: "Integrated Antenatal Care (ANC) at Padjadjaran Clinic",
+    category: "Clinical Placement",
+    badge: "Primary Clinical Care",
     description:
-      "Pemeriksaan kehamilan komprehensif bagi ibu hamil di Klinik Padjadjaran, mencakup pemantauan tumbuh kembang janin, pemeriksaan tanda vital, penimbangan, dan KIE nutrisi kehamilan.",
+      "A supervised clinical placement focused on antenatal examinations, maternal and fetal health monitoring, and pregnancy counseling at Padjadjaran Clinic.",
     highlights: [
-      "Pemeriksaan palpasi Leopold dan denyut jantung janin (Doppler)",
-      "Skrining faktor risiko kehamilan dan persiapan persalinan aman",
-      "Penyampaian konseling kehamilan yang menenangkan dan informatif",
+      "Conducted antenatal examinations, including Leopold maneuvers and fetal heart rate assessment using a Doppler device.",
+      "Monitored vital signs, maternal weight, and pregnancy conditions to support risk identification.",
+      "Provided counseling on pregnancy nutrition and birth preparedness under clinical supervision.",
     ],
     images: [
       "/Project/Antenatal Care (ANC) at Padjadjaran Clinic/1788921774641.jpg",
@@ -249,36 +306,52 @@ const rawProjectsData: ProjectItem[] = [
     ],
   },
   {
-    id: "edukasi-remaja",
-    title: "Edukasi Kesehatan Remaja di SMK Bhakti Kencana",
-    category: "Penyuluhan Komunitas",
-    badge: "Outreach Program",
+    id: "project-gigi-sehat",
+    title: "Aksi Gigi Sehat – Community Oral Health Education",
+    category: "Community Outreach",
+    badge: "Primary School Health",
     description:
-      "Program pengabdian masyarakat berupa penyuluhan kesehatan reproduksi remaja, pencegahan anemia, dan pemahaman gizi seimbang bagi siswa SMK Bhakti Kencana Cileunyi.",
+      "A community outreach project at SDN Cibeusi aimed at improving elementary students’ awareness of oral hygiene and healthy daily habits.",
     highlights: [
-      "Edukasi siklus menstruasi sehat dan personal hygiene",
-      "Sosialisasi pencegahan anemia pada remaja putri dengan tablet tambah darah",
-      "Sesi tanya jawab interaktif untuk memecahkan stigma seputar kesehatan reproduksi",
-    ],
-    images: [
-      "/Project/Adolescent Health Education Outreach at SMK Bhakti Kencana Cileunyi/1788922924066.jpg",
-    ],
-  },
-  {
-    id: "aksi-gigi-sehat",
-    title: "Aksi Gigi Sehat & Pengabdian Komunitas (ENCHORA)",
-    category: "Promosi Kesehatan",
-    badge: "Pengabdian Masyarakat",
-    description:
-      "Inisiatif promosi kesehatan gigi dan perilaku hidup bersih dan sehat (PHBS) serta rangkaian Project of Action (ENCHORA) untuk anak-anak dan warga setempat.",
-    highlights: [
-      "Demonstrasi praktik sikat gigi yang benar bagi anak-anak",
-      "Edukasi keterkaitan kesehatan rongga mulut dengan tumbuh kembang anak",
-      "Kolaborasi tim multidisiplin mahasiswa dalam aksi sosial",
+      "Coordinated external communications and school permissions to support program implementation.",
+      "Delivered interactive oral health education to elementary school students.",
+      "Demonstrated proper toothbrushing techniques to encourage healthy oral hygiene practices.",
     ],
     images: [
       "/Project/Aksi Gigi Sehat - Community Oral Health Education/1788842438293.jpg",
-      "/Project/Project of Action (ENCHORA)/1788842873661.jpg",
+    ],
+  },
+  {
+    id: "project-gemas",
+    title: "Health Promotion: GEMAS (Gerakan Masyarakat Sehat)",
+    category: "Community Health",
+    badge: "Preventive Care",
+    description:
+      "A community health promotion program in Desa Cilayung focused on Clean and Healthy Living Behaviors (PHBS) and basic health screening for older residents.",
+    highlights: [
+      "Delivered health education on smoking awareness, mosquito larvae control, and waste sorting.",
+      "Assisted with blood pressure, blood glucose, and cholesterol screening for older residents.",
+      "Supported community awareness of disease prevention and routine health monitoring.",
+    ],
+    images: [
+      "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/1788844787993.jpg",
+      "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/1788845091019.jpg",
+    ],
+  },
+  {
+    id: "project-gemasting",
+    title: "Community Health Promotion through GEMASTING & KEMAYUNG",
+    category: "Maternal & Child Health",
+    badge: "Stunting Prevention",
+    description:
+      "A community health promotion program in Desa Cilayung focused on stunting prevention and supporting healthy growth and development in young children.",
+    highlights: [
+      "Supported stunting prevention education through GEMASTING (Gerakan Masyarakat Cegah Stunting).",
+      "Contributed to community education on early childhood growth and development through KEMAYUNG (Perkembangan Balita Cilayung).",
+      "Promoted awareness of child nutrition, growth monitoring, and developmental needs.",
+    ],
+    images: [
+      "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/1788845157776.jpg",
     ],
   },
 ];
@@ -290,44 +363,46 @@ export const projectsData: ProjectItem[] = rawProjectsData.map((project) => ({
 
 const rawCertificationsData: Certification[] = [
   {
-    id: "cert-rshs",
-    title: "Orientasi Rumah Sakit Mahasiswa",
-    issuer: "Kemenkes RI / RSUP Dr. Hasan Sadikin Bandung",
-    year: "2023",
-    credentialId: "PL.02.01/X.2.2/2688/2023",
-    image: "/Annisa_sertifikat/1788784213850.jpg",
+    id: "cert-journal-2026",
+    title: "Scientific Publication: Penyuluhan Ibu Hamil Mengenai Depresi Pasca Persalinan",
+    issuer: "Jurnal PengabdianMu (Jurnal Ilmiah Pengabdian kepada Masyarakat, Sinta 3)",
+    year: "2026",
+    badge: "Peer-Reviewed Journal",
+    credentialUrl: "https://drive.google.com/file/d/1S6yS9HR970C1IOlaBpWH9dLWe69ZTP6h/view?usp=sharing",
+    driveUrl: "https://drive.google.com/file/d/1S6yS9HR970C1IOlaBpWH9dLWe69ZTP6h/view?usp=sharing",
+    image: "/fotojurnal.png",
+  },
+  {
+    id: "cert-microsoft-bootcamp",
+    title: "Microsoft Office Specialist (Word, Excel, PowerPoint)",
+    issuer: "Certified Bootcamp Program",
+    year: "2026",
+    badge: "Digital Skills Certification",
+    image: "/Annisa_sertifikat/Sertifikasi Microsoft_Annisa Haura_page-0001.jpg",
   },
   {
     id: "cert-haki",
-    title: "Surat Pencatatan Hak Cipta - Buku Saku MP-ASI",
-    issuer: "Kementerian Hukum dan HAM Republik Indonesia",
+    title: "Official Intellectual Property (HAKI): Buku Saku MP-ASI",
+    issuer: "Kementerian Hukum dan Hak Asasi Manusia RI (No. EC00202468494)",
     year: "2024",
-    credentialId: "No. 000643844",
-    image: "/Project/Buku Saku MPASI/1788919234101.jpg",
+    badge: "Intellectual Property Rights",
+    image: "/Annisa_sertifikat/Lani GumilangSST.,MM. , Buku Saku MP ASI, sertifikat_EC00202468494 (2) (2)_page-0001.jpg",
   },
   {
-    id: "cert-elt",
-    title: "English Language Test (ELT) - Score: 537",
-    issuer: "Pusat Bahasa FIB Universitas Padjadjaran",
+    id: "cert-toefl",
+    title: "English Proficiency Test (TOEFL Equivalent)",
+    issuer: "Language Certification Center",
     year: "2024",
-    credentialId: "No. 241101518",
-    image: "/Annisa_sertifikat/1788789138472.jpg",
+    badge: "English Language",
+    image: "/Annisa_sertifikat/Sertifikat TOEFL_Annisa Haura_page-0001.jpg",
   },
   {
-    id: "cert-msoffice",
-    title: "Bootcamp Sertifikasi Microsoft Office Specialist",
-    issuer: "Excel, Word & PowerPoint Specialist Certification",
-    year: "2024",
-    pdfUrl:
-      "/Annisa_sertifikat/Annisa_Haura_Salshabira-bootcamp-sertifikasi-microsoft-office-excel-word-power-point-specialist.pdf",
-  },
-  {
-    id: "cert-career",
-    title: "Short Class Persiapan Kerja",
-    issuer: "Professional Career Preparation",
-    year: "2024",
-    pdfUrl:
-      "/Annisa_sertifikat/Annisa_Haura_Salshabira-short-class-persiapan-kerja.pdf",
+    id: "cert-rshs",
+    title: "Hospital Clinical Orientation for Midwifery Students",
+    issuer: "RSUP Dr. Hasan Sadikin Bandung",
+    year: "2023",
+    badge: "Hospital Safety & Patient Care",
+    image: "/Annisa_sertifikat/1788784213850.jpg",
   },
 ];
 
@@ -341,50 +416,49 @@ export const certificationsData: Certification[] = rawCertificationsData.map(
 
 const rawOrganizationExperiences: Experience[] = [
   {
-    id: "naviyara",
-    role: "Ketua Divisi Fasilitator – Naviyara",
-    institution: "Himpunan Mahasiswa Kebidanan FK UNPAD",
-    period: "Agustus 2024 – Desember 2024 (5 Bulan)",
-    location: "Jatinangor, Jawa Barat",
-    type: "Organisasi",
-    badge: "Kepemimpinan",
+    id: "hima-kaderisasi",
+    role: "Staff of Cadreization and Student Development",
+    institution: "Himpunan Mahasiswa Kebidanan FK Universitas Padjadjaran",
+    period: "Jan 2024 – Dec 2024 (1 Year)",
+    location: "Jatinangor, West Java",
+    type: "Organization",
+    badge: "Curriculum & Character Building",
     description: [
-      "Memimpin dan mengarahkan tim berisi 8 fasilitator dalam menjalankan orientasi komprehensif bagi 39 mahasiswa baru kebidanan.",
-      "Membimbing angkatan mahasiswa baru kebidanan 2024 hingga mencapai tingkat kelulusan 100% dengan capaian akademik baik.",
-      "Mengkoordinasikan sesi mentoring, memantau adaptasi mahasiswa baru, dan mengevaluasi kinerja tim secara berkala.",
-    ],
-    images: [
-      "/Himpunan/Head of Facilitator Division - Naviyara (New Student Orientation)/1788786616513.jpg",
-      "/Himpunan/Head of Facilitator Division - Naviyara (New Student Orientation)/1788786434253.jpg",
-    ],
-  },
-  {
-    id: "kaderisasi-hima",
-    role: "Staf Kaderisasi dan Pengembangan Mahasiswa",
-    institution: "Himpunan Mahasiswa Kebidanan FK UNPAD",
-    period: "Maret 2024 – Maret 2025 (1 Tahun 1 Bulan)",
-    location: "Jatinangor, Jawa Barat",
-    type: "Organisasi",
-    badge: "Pengembangan Karakter",
-    description: [
-      "Merancang kurikulum dan konsep inti program kaderisasi mahasiswa baru untuk membangun karakter dan adaptasi akademik kebidanan.",
-      "Menyusun alur acara, jadwal, dan rencana operasional teknis bersama panitia lintas divisi.",
+      "Designed the curriculum and core concept for new student orientation programs to foster character building and academic adaptability.",
+      "Structured event workflows, timelines, and technical operational plans in active coordination with cross-divisional committees.",
     ],
     images: [
       "/Himpunan/Staff of Cadreization and Student Development/1788785495281.jpg",
     ],
   },
   {
-    id: "humas-armavara",
-    role: "Staf Hubungan Masyarakat – Armavara",
-    institution: "Himpunan Mahasiswa Kebidanan FK UNPAD",
-    period: "Juli 2023 – Desember 2023 (6 Bulan)",
-    location: "Jatinangor, Jawa Barat",
-    type: "Organisasi",
-    badge: "Komunikasi Publik",
+    id: "naviyara",
+    role: "Head of Facilitator Division – Naviyara (New Student Orientation)",
+    institution: "Himpunan Mahasiswa Kebidanan FK Universitas Padjadjaran",
+    period: "May 2024 – Oct 2024 (5 Months)",
+    location: "Jatinangor, West Java",
+    type: "Organization",
+    badge: "Division Head & Mentorship",
     description: [
-      "Mengelola saluran komunikasi resmi dan narahubung utama penyebaran informasi kepada peserta orientasi dan pemangku kepentingan.",
-      "Menjaga keterbukaan arus informasi yang terstruktur, tepat waktu, dan akurat.",
+      "Led 8 facilitators in delivering an orientation program for 39 incoming midwifery students, coordinating cross-divisional activities to ensure smooth program execution.",
+      "Mentored the incoming cohort through structured guidance, regular monitoring, and performance evaluations, contributing to a 100% pass rate.",
+    ],
+    images: [
+      "/Himpunan/Head of Facilitator Division - Naviyara (New Student Orientation)/1788786434253.jpg",
+      "/Himpunan/Head of Facilitator Division - Naviyara (New Student Orientation)/1788786616513.jpg",
+    ],
+  },
+  {
+    id: "armavara-pr",
+    role: "Public Relations Staff – Armavara (New Student Orientation)",
+    institution: "Himpunan Mahasiswa Kebidanan FK Universitas Padjadjaran",
+    period: "Jul 2023 – Dec 2023 (6 Months)",
+    location: "Jatinangor, West Java",
+    type: "Organization",
+    badge: "Public Communications",
+    description: [
+      "Managed official communication channels and disseminated timely, structured information to participants and stakeholders.",
+      "Served as the primary contact for external communications and coordinated with internal divisions to ensure consistent event updates.",
     ],
     images: [
       "/Himpunan/Public Relations Staff - Himpunan Mahasiswa Kebidanan FK Universitas Padjadjaran/1788787702278.jpg",
@@ -392,17 +466,34 @@ const rawOrganizationExperiences: Experience[] = [
   },
   {
     id: "oppek-fk",
-    role: "Fasilitator – OPPEK Fakultas Kedokteran",
-    institution: "BEM Kema FK UNPAD",
-    period: "Agustus 2023 (1 Bulan)",
-    location: "Jatinangor, Jawa Barat",
-    type: "Organisasi",
-    badge: "Fasilitator Fakultas",
+    role: "Facilitator – Faculty New Student Orientation (OPPEK)",
+    institution: "BEM Kema FK Unpad",
+    period: "Aug 2023 (1 Month)",
+    location: "Jatinangor, West Java",
+    type: "Organization",
+    badge: "Faculty Orientation",
     description: [
-      "Membimbing mahasiswa baru program sarjana kedokteran dalam proses transisi akademik dan pengenalan iklim kampus FK UNPAD.",
-      "Mengelola komunikasi interaktif dan pembinaan kedisiplinan berbasis nilai humanisme kedokteran.",
+      "Mentored incoming medical students during orientation to support their academic and campus transition.",
+      "Coordinated communication between committee members and participants to ensure clear and consistent information delivery.",
     ],
     images: [],
+  },
+  {
+    id: "enchora-sponsorship",
+    role: "Sponsorship Staff – Project of Action (ENCHORA)",
+    institution: "BEM Kema FK Unpad",
+    period: "2023 (Collaborative Project)",
+    location: "Jatinangor, West Java",
+    type: "Organization",
+    badge: "Funding & Strategic Partnership",
+    description: [
+      "Drafted sponsorship proposals and mapped potential partners to support event funding.",
+      "Managed partner communications, negotiations, and administrative follow-ups to facilitate sponsorship agreements for a collaborative project involving students from General Medicine, Veterinary Medicine, and Midwifery programs.",
+    ],
+    images: [
+      "/Project/Project of Action (ENCHORA)/1788842873661.jpg",
+      "/Project/Project of Action (ENCHORA)/1788842873686.jpg",
+    ],
   },
 ];
 
@@ -412,26 +503,3 @@ export const organizationExperiences: Experience[] = rawOrganizationExperiences.
     images: org.images.map(getAssetUrl),
   })
 );
-
-export const educationData: EducationItem[] = [
-  {
-    degree: "Sarjana Terapan Kebidanan (S.Tr.Keb)",
-    institution: "Universitas Padjadjaran (UNPAD)",
-    faculty: "Fakultas Kedokteran · Pendidikan Bidan Jalur Langsung",
-    period: "Agustus 2022 – Juni 2026",
-    description:
-      "Menempuh pendidikan akademik dan profesi kebidanan komprehensif, mencakup fisiologi obstetri, ginekologi, kegawatdaruratan maternal-neonatal, kesehatan reproduksi, serta kebidanan komunitas berbasis keluarga dan riset.",
-    achievements: [
-      "Pencatat Hak Cipta Resmi Kemenkumham RI untuk Buku Saku MP-ASI",
-      "Ketua Divisi Fasilitator Naviyara Orientasi Mahasiswa Baru Kebidanan",
-      "Stase Klinik Aktif di RS Rujukan (RSUD Syamsudin & RSHS Bandung) serta UPTD Puskesmas Padasuka",
-    ],
-  },
-  {
-    degree: "Sekolah Menengah Atas (MIPA)",
-    institution: "SMA Kartika XIX-1 Bandung",
-    period: "Juni 2019 – Mei 2022",
-    description:
-      "Fokus pada jurusan Matematika dan Ilmu Pengetahuan Alam (MIPA). Aktif dalam organisasi seni dan sosial kemasyarakatan Karawitan (Staf Publikasi, Desain & Dokumentasi).",
-  },
-];

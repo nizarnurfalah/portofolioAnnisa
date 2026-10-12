@@ -6,29 +6,31 @@ import Showcase from "./components/Showcase";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import IntroSplash from "./components/IntroSplash";
 import JsonLd from "./lib/JsonLd";
 import { personalInfo } from "./data/portfolio";
 
 export const metadata: Metadata = {
-  title: `${personalInfo.fullName} | Sarjana Terapan Kebidanan UNPAD`,
+  title: `${personalInfo.fullName} | Portfolio`,
   description:
-    "Portofolio profesional Annisa Haura Salshabira, lulusan Sarjana Terapan Kebidanan Fakultas Kedokteran Universitas Padjadjaran. Berpengalaman di RSUD Syamsudin, Puskesmas Padasuka, RSHS, dan Kebidanan Komunitas.",
+    "Professional portfolio of Annisa Haura Salshabira, Bachelor of Applied Science in Midwifery from Faculty of Medicine, Universitas Padjadjaran. Aspiring professional in healthcare administration, medical claims verification, and corporate operations.",
   openGraph: {
-    title: `${personalInfo.fullName} | Portofolio Bidan Terapan UNPAD`,
+    title: `${personalInfo.fullName} | Portfolio`,
     description:
-      "Profil, rekam jejak praktik klinik, kompetensi asuhan kebidanan, sertifikasi, dan inisiatif kesehatan ibu & anak Annisa Haura Salshabira.",
-    images: ["/profile/annisa-hero.jpg"],
+      "Professional profile, clinical placement track record, healthcare competencies, certifications, and public health projects of Annisa Haura Salshabira.",
+    images: ["/fotononformal/Annisa Haura Salshabira-3.jpg"],
   },
 };
 
 export default function Home() {
   return (
     <>
+      <IntroSplash />
       <JsonLd />
       <header>
         <Navbar />
       </header>
-      <main className="min-h-screen bg-[#fafaf9] overflow-x-hidden">
+      <main className="min-h-screen bg-[#fffbfd] overflow-x-hidden">
         <Hero />
         <About />
         <Showcase />

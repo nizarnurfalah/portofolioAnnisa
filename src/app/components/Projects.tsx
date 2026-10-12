@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { projectsData } from "../data/portfolio";
 
@@ -10,38 +10,79 @@ export default function Projects() {
     caption: string;
   } | null>(null);
 
+  // State for mobile projects carousel slider
+  const [activeProjectSlide, setActiveProjectSlide] = useState(0);
+  const projectScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollToProject = (index: number) => {
+    setActiveProjectSlide(index);
+    if (projectScrollRef.current) {
+      const card = projectScrollRef.current.children[index] as HTMLElement;
+      if (card) {
+        card.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      }
+    }
+  };
+
   return (
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="py-12 md:py-28 px-4 sm:px-6 bg-white border-t border-stone-200"
+      className="py-12 md:py-28 px-4 sm:px-6 bg-white border-t border-pink-100"
     >
       <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div data-aos="fade-up" className="mb-6 md:mb-14">
+        {/* Section Header (from Page 7 of PDF) */}
+        <div data-aos="fade-up" className="mb-8 md:mb-14">
           <span className="text-xs sm:text-sm font-bold text-pink-700 tracking-widest uppercase mb-2 sm:mb-3 block">
-            03 — PROYEK & KARYA EDUKASI
+            03 — PUBLIC HEALTH PROJECTS & EDUCATION
           </span>
           <h2
             id="projects-heading"
             className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-stone-900 uppercase"
           >
-            INISIATIF & EDUKASI KESEHATAN
+            Health Promotion & Community Education
           </h2>
           <p className="text-stone-600 text-xs sm:text-base md:text-lg mt-2 sm:mt-3 max-w-2xl">
-            Karya inovatif dalam promosi kesehatan, pelayanan ANC klinis, hak kekayaan
-            intelektual (HAKI), serta pengabdian kesehatan bagi masyarakat.
+            Community health initiatives, reproductive health outreach, and
+            maternal-child clinical interventions designed to foster health
+            equity and wellness.
           </p>
         </div>
 
+        {/* Mobile Swipe Helper Header */}
+        <div className="flex md:hidden items-center justify-between px-1 text-xs text-stone-500 font-medium mb-3">
+          <span className="flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-pink-600 animate-pulse"></span>
+            Project {activeProjectSlide + 1} of {projectsData.length}
+          </span>
+          <span className="flex items-center gap-1 text-pink-600 font-semibold">
+            Swipe to explore <span>→</span>
+          </span>
+        </div>
+
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-4 sm:gap-8">
+        <div
+          ref={projectScrollRef}
+          onScroll={(e) => {
+            const el = e.currentTarget;
+            const scrollLeft = el.scrollLeft;
+            const cardWidth = el.offsetWidth * 0.82;
+            const newIndex = Math.min(
+              projectsData.length - 1,
+              Math.max(0, Math.round(scrollLeft / (cardWidth || 1)))
+            );
+            if (newIndex !== activeProjectSlide) {
+              setActiveProjectSlide(newIndex);
+            }
+          }}
+          className="flex md:grid md:grid-cols-2 gap-4 sm:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-3 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        >
           {projectsData.map((project, index) => (
             <article
               key={project.id}
               data-aos="fade-up"
               data-aos-delay={index * 100}
-              className="bg-stone-50/60 border border-stone-200 rounded-2xl sm:rounded-3xl p-4 sm:p-8 flex flex-col justify-between hover:border-pink-400 hover:shadow-lg transition-all duration-300 group"
+              className="w-[86vw] max-w-[340px] md:w-full md:max-w-none shrink-0 md:shrink snap-center bg-stone-50/70 border border-stone-200 rounded-2xl sm:rounded-3xl p-4 sm:p-7 flex flex-col justify-between hover:border-pink-400 hover:shadow-md transition-all duration-300 group"
             >
               <div>
                 {/* Image Showcase */}
@@ -61,10 +102,11 @@ export default function Projects() {
                       fill
                       sizes="(max-width: 768px) 100vw, 500px"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      unoptimized
                     />
                     <div className="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/25 transition-colors flex items-center justify-center">
                       <span className="opacity-0 group-hover:opacity-100 bg-white/95 text-stone-900 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold shadow-md">
-                        Buka Gambar
+                        View Image
                       </span>
                     </div>
 
@@ -90,13 +132,15 @@ export default function Projects() {
                 </p>
 
                 {/* Highlights List */}
-                <ul className="space-y-1 sm:space-y-1.5 mb-4 sm:mb-6">
+                <ul className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
                   {project.highlights.map((item, hIdx) => (
                     <li
                       key={hIdx}
-                      className="text-xs sm:text-sm text-stone-700 flex items-start gap-1.5 sm:gap-2"
+                      className="text-xs sm:text-sm text-stone-700 flex items-start gap-1.5 sm:gap-2 leading-relaxed"
                     >
-                      <span className="text-pink-600 font-bold shrink-0">✓</span>
+                      <span className="text-pink-600 font-bold shrink-0 mt-0.5">
+                        ✓
+                      </span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -113,7 +157,7 @@ export default function Projects() {
                       onClick={() =>
                         setSelectedImg({
                           url: img,
-                          caption: `${project.title} - Foto ${iIdx + 1}`,
+                          caption: `${project.title} - Photo ${iIdx + 1}`,
                         })
                       }
                       className="relative w-14 h-10 sm:w-16 sm:h-12 rounded-lg overflow-hidden border border-stone-300 cursor-pointer group"
@@ -124,6 +168,7 @@ export default function Projects() {
                         fill
                         sizes="64px"
                         className="object-cover group-hover:scale-110 transition-transform"
+                        unoptimized
                       />
                     </button>
                   ))}
@@ -133,38 +178,28 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Scientific Paper / Research Card */}
-        <div
-          data-aos="fade-up"
-          className="mt-8 sm:mt-12 p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-pink-800 to-rose-700 text-white shadow-lg sm:shadow-xl"
-        >
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
-            <div className="space-y-1.5 sm:space-y-2">
-              <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 bg-pink-600/80 text-pink-100 text-[10px] sm:text-xs font-bold rounded-full uppercase tracking-wider inline-block">
-                Karya Tulis & Pengabdian Ilmiah
-              </span>
-              <h3 className="text-base sm:text-2xl font-bold text-white leading-snug">
-                Penyuluhan Depresi Pasca Persalinan pada Ibu Hamil
-              </h3>
-              <p className="text-xs sm:text-sm text-pink-100 max-w-2xl leading-relaxed">
-                Upaya Deteksi Dini Gangguan Psikologis pada Ibu Hamil di Desa Cikeruh,
-                Kecamatan Jatinangor — berfokus pada kesehatan mental perinatal ibu demi
-                kesejahteraan ibu dan janin.
-              </p>
-            </div>
-            <div className="shrink-0">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-5 sm:py-2.5 rounded-full bg-white text-pink-900 font-bold text-[11px] sm:text-xs uppercase tracking-wider">
-                Desa Cikeruh · Jatinangor
-              </span>
-            </div>
-          </div>
+        {/* Mobile Pagination Indicator Dots */}
+        <div className="flex md:hidden items-center justify-center gap-2 pt-4">
+          {projectsData.map((_, dotIdx) => (
+            <button
+              key={dotIdx}
+              type="button"
+              onClick={() => scrollToProject(dotIdx)}
+              aria-label={`Go to project ${dotIdx + 1}`}
+              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                activeProjectSlide === dotIdx
+                  ? "w-7 bg-pink-600 shadow-xs"
+                  : "w-2 bg-pink-200 hover:bg-pink-300"
+              }`}
+            />
+          ))}
         </div>
       </div>
 
       {/* Lightbox Modal */}
       {selectedImg && (
         <div
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-xs flex items-center justify-center p-4"
           onClick={() => setSelectedImg(null)}
         >
           <div
@@ -177,8 +212,8 @@ export default function Projects() {
               </p>
               <button
                 onClick={() => setSelectedImg(null)}
-                className="w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center text-stone-600 font-bold transition-colors"
-                aria-label="Tutup pratinjau"
+                className="w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center text-stone-600 font-bold transition-colors cursor-pointer"
+                aria-label="Close preview"
               >
                 ✕
               </button>
@@ -190,6 +225,7 @@ export default function Projects() {
                 fill
                 sizes="(max-width: 1024px) 100vw, 800px"
                 className="object-contain"
+                unoptimized
               />
             </div>
           </div>

@@ -21,22 +21,19 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nizarnurfalah.githu
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${personalInfo.fullName} | Sarjana Terapan Kebidanan UNPAD`,
+    default: `${personalInfo.fullName} | Portfolio`,
     template: `%s | ${personalInfo.fullName}`,
   },
   description:
-    "Portofolio profesional Annisa Haura Salshabira, lulusan Sarjana Terapan Kebidanan Fakultas Kedokteran Universitas Padjadjaran. Berpengalaman di RSUD Syamsudin, Puskesmas Padasuka, RSHS, dan Kebidanan Komunitas.",
+    "Professional portfolio of Annisa Haura Salshabira, Bachelor of Applied Science in Midwifery from Faculty of Medicine, Universitas Padjadjaran. Aspiring professional in healthcare administration, medical claims verification, and corporate operations.",
   keywords: [
     "Annisa Haura Salshabira",
-    "Bidan",
-    "Kebidanan UNPAD",
-    "Sarjana Terapan Kebidanan",
-    "Fakultas Kedokteran UNPAD",
-    "Kesehatan Ibu dan Anak",
-    "Bidan Bandung",
-    "Antenatal Care",
-    "Asuhan Persalinan Normal",
-    "Buku Saku MPASI",
+    "Healthcare Administration",
+    "Midwifery",
+    "Public Health",
+    "Universitas Padjadjaran",
+    "Medical Records",
+    "Health Operations",
   ],
   authors: [{ name: personalInfo.fullName, url: siteUrl }],
   creator: personalInfo.fullName,
@@ -63,27 +60,18 @@ export const metadata: Metadata = {
   manifest: getAssetUrl("/site.webmanifest"),
   openGraph: {
     type: "website",
-    locale: "id_ID",
+    locale: "en_US",
     url: siteUrl,
     siteName: `${personalInfo.fullName} Portfolio`,
-    title: `${personalInfo.fullName} | Sarjana Terapan Kebidanan UNPAD`,
+    title: `${personalInfo.fullName} | Portfolio`,
     description:
-      "Portofolio profesional Annisa Haura Salshabira, lulusan Sarjana Terapan Kebidanan Fakultas Kedokteran Universitas Padjadjaran.",
-    images: [
-      {
-        url: "/profile/annisa-hero.jpg",
-        width: 1200,
-        height: 630,
-        alt: `${personalInfo.fullName} - Bidan Terapan UNPAD`,
-      },
-    ],
+      "Professional portfolio of Annisa Haura Salshabira, Bachelor of Applied Midwifery from Faculty of Medicine, Universitas Padjadjaran.",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${personalInfo.fullName} | Sarjana Terapan Kebidanan UNPAD`,
+    title: `${personalInfo.fullName} | Portfolio`,
     description:
-      "Portofolio profesional Annisa Haura Salshabira, lulusan Sarjana Terapan Kebidanan FK UNPAD.",
-    images: ["/profile/annisa-hero.jpg"],
+      "Professional portfolio of Annisa Haura Salshabira, Bachelor of Applied Midwifery from Faculty of Medicine, Universitas Padjadjaran.",
   },
   alternates: {
     canonical: siteUrl,
@@ -93,7 +81,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fafaf9" },
+    { media: "(prefers-color-scheme: light)", color: "#fffbfd" },
     { media: "(prefers-color-scheme: dark)", color: "#1c1917" },
   ],
   width: "device-width",
@@ -107,13 +95,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className="scroll-smooth overflow-x-hidden">
+    <html lang="en" className="scroll-smooth overflow-x-hidden">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
       </head>
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} antialiased font-sans overflow-x-hidden bg-[#fafaf9] text-stone-900`}
+        className={`${inter.variable} ${spaceGrotesk.variable} antialiased font-sans overflow-x-hidden bg-[#fffbfd] text-stone-900`}
       >
         <AOSProvider>{children}</AOSProvider>
       </body>
