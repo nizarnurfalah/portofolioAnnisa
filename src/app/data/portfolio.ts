@@ -195,6 +195,7 @@ const rawClinicalExperiences: Experience[] = [
       "Maintained timely clinical documentation while adhering to patient safety and infection prevention practices.",
     ],
     images: [
+      "/Magang/Clinical Midwifery Intern RSUD R. Syamsudin, SH. Sukabumi · Magang/IMG-20261013-WA0002.jpg",
       "/Magang/Clinical Midwifery Intern RSUD R. Syamsudin, SH. Sukabumi · Magang/1788756910391.jpg",
       "/Magang/Clinical Midwifery Intern RSUD R. Syamsudin, SH. Sukabumi · Magang/1788756910134.jpg",
       "/Magang/Clinical Midwifery Intern RSUD R. Syamsudin, SH. Sukabumi · Magang/1788756910265.jpg",
@@ -257,6 +258,10 @@ const rawClinicalExperiences: Experience[] = [
       "Contributed to measurable behavior changes through targeted community health education and interventions.",
     ],
     images: [
+      "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/gemas.jpeg",
+      "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/gemas 2.jpeg",
+      "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/gemasting kemayung.jpg",
+      "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/gemasting kemayung 2.jpg",
       "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/1788844787993.jpg",
       "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/1788845091019.jpg",
       "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/1788845157776.jpg",
@@ -334,6 +339,8 @@ const rawProjectsData: ProjectItem[] = [
       "Supported community awareness of disease prevention and routine health monitoring.",
     ],
     images: [
+      "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/gemas.jpeg",
+      "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/gemas 2.jpeg",
       "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/1788844787993.jpg",
       "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/1788845091019.jpg",
     ],
@@ -351,6 +358,8 @@ const rawProjectsData: ProjectItem[] = [
       "Promoted awareness of child nutrition, growth monitoring, and developmental needs.",
     ],
     images: [
+      "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/gemasting kemayung.jpg",
+      "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/gemasting kemayung 2.jpg",
       "/Magang/Midwifery Community Intern Universitas Padjadjaran · Magang/1788845157776.jpg",
     ],
   },
@@ -476,7 +485,9 @@ const rawOrganizationExperiences: Experience[] = [
       "Mentored incoming medical students during orientation to support their academic and campus transition.",
       "Coordinated communication between committee members and participants to ensure clear and consistent information delivery.",
     ],
-    images: [],
+    images: [
+      "/Magang/Facilitator – Faculty New Student Orientation (OPPEK).jpg",
+    ],
   },
   {
     id: "enchora-sponsorship",
