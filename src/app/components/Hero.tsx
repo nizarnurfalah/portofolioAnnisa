@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { personalInfo, nonFormalPhotos } from "../data/portfolio";
+import { personalInfo, nonFormalPhotos, getAssetUrl } from "../data/portfolio";
 
 export default function Hero() {
   // Duplicate array for seamless infinite marquee loop
@@ -93,11 +93,11 @@ export default function Hero() {
             href={personalInfo.cvUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 sm:flex-none px-6 sm:px-9 py-3 sm:py-4 bg-pink-600 text-white text-xs sm:text-base font-bold rounded-full hover:bg-pink-700 transition-all duration-300 hover:scale-105 text-center inline-flex items-center justify-center gap-1.5 sm:gap-2 shadow-lg shadow-pink-600/30"
+            className="flex-1 sm:flex-none px-5 sm:px-7 py-3 sm:py-3.5 bg-pink-600 text-white text-xs sm:text-sm font-bold rounded-full hover:bg-pink-700 transition-all duration-300 hover:scale-105 text-center inline-flex items-center justify-center gap-1.5 sm:gap-2 shadow-lg shadow-pink-600/30"
           >
             <svg
-              width="18"
-              height="18"
+              width="16"
+              height="16"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -113,14 +113,39 @@ export default function Hero() {
             <span>Download CV</span>
           </a>
           <a
+            href={getAssetUrl("/portfolio-pdf")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 sm:flex-none px-5 sm:px-7 py-3 sm:py-3.5 bg-white border-2 border-pink-500 text-pink-700 text-xs sm:text-sm font-bold rounded-full hover:bg-pink-50 transition-all duration-300 hover:scale-105 text-center inline-flex items-center justify-center gap-1.5 sm:gap-2 shadow-sm"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+              <polyline points="10 9 9 9 8 9" />
+            </svg>
+            <span>Portfolio PDF</span>
+          </a>
+          <a
             href="#contact"
-            className="flex-1 sm:flex-none px-6 sm:px-9 py-3 sm:py-4 bg-stone-900 text-white text-xs sm:text-base font-bold rounded-full hover:bg-stone-800 transition-all duration-300 hover:scale-105 text-center shadow-md"
+            className="flex-1 sm:flex-none px-5 sm:px-7 py-3 sm:py-3.5 bg-stone-900 text-white text-xs sm:text-sm font-bold rounded-full hover:bg-stone-800 transition-all duration-300 hover:scale-105 text-center shadow-md"
           >
             Let&apos;s Connect
           </a>
           <a
             href="#about"
-            className="hidden sm:inline-flex sm:flex-none px-7 md:px-9 py-3.5 md:py-4 border-2 border-stone-800 text-stone-900 text-sm md:text-base font-bold rounded-full hover:bg-stone-900 hover:text-white transition-all duration-300 text-center bg-white/90 backdrop-blur-xs shadow-sm"
+            className="hidden sm:inline-flex sm:flex-none px-6 py-3.5 border-2 border-stone-800 text-stone-900 text-sm font-bold rounded-full hover:bg-stone-900 hover:text-white transition-all duration-300 text-center bg-white/90 backdrop-blur-xs shadow-sm"
           >
             About Me
           </a>

@@ -77,8 +77,20 @@ export default function Navbar() {
               </a>
             ))}
             <a
+              href={getAssetUrl("/portfolio-pdf")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-bold text-pink-700 bg-pink-50 hover:bg-pink-100 border border-pink-200 px-3 py-1.5 rounded-full transition-all duration-300 flex items-center gap-1.5"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>
+              <span>PDF Portfolio</span>
+            </a>
+            <a
               href="#contact"
-              className="px-5 py-2.5 bg-pink-600 text-white text-sm font-semibold rounded-full hover:bg-pink-700 transition-all duration-300 hover:shadow-md hover:scale-[1.02]"
+              className="px-5 py-2 bg-pink-600 text-white text-sm font-semibold rounded-full hover:bg-pink-700 transition-all duration-300 hover:shadow-md hover:scale-[1.02]"
             >
               Let&apos;s Connect
             </a>
@@ -119,7 +131,7 @@ export default function Navbar() {
         <div
           id="mobile-menu"
           className={`md:hidden overflow-hidden transition-all duration-300 ${
-            menuOpen ? "max-h-80 mt-4 opacity-100" : "max-h-0 opacity-0"
+            menuOpen ? "max-h-96 mt-4 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <div className="flex flex-col gap-3 py-4 border-t border-pink-100 bg-white/95 rounded-2xl p-4 mt-2 shadow-xs">
@@ -133,6 +145,15 @@ export default function Navbar() {
                 {link.name}
               </a>
             ))}
+            <a
+              href={getAssetUrl("/portfolio-pdf")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-base font-bold text-pink-700 flex items-center gap-2 py-1"
+              onClick={() => setMenuOpen(false)}
+            >
+              <span>📄 PDF Portfolio Dossier</span>
+            </a>
             <a
               href="#contact"
               className="mt-2 px-5 py-2.5 bg-pink-600 text-white text-sm font-semibold rounded-full hover:bg-pink-700 transition-colors duration-300 text-center"

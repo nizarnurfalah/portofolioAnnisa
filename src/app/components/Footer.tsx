@@ -58,6 +58,14 @@ export default function Footer() {
             >
               Download CV
             </a>
+            <a
+              href={getAssetUrl("/portfolio-pdf")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-pink-400 hover:text-pink-300 transition-colors font-semibold"
+            >
+              Portfolio PDF
+            </a>
           </nav>
         </div>
 
