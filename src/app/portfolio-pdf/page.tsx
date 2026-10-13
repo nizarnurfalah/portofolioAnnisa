@@ -130,12 +130,12 @@ export default function PortfolioPdfPage() {
 
           {/* Top Profile Card with Photo */}
           <div className="flex items-center gap-6 p-4 rounded-2xl bg-stone-50 border border-stone-200/80 mb-5">
-            <div className="relative w-28 h-28 rounded-2xl overflow-hidden border-2 border-pink-400 shrink-0 shadow-md">
+            <div className="relative w-28 h-28 rounded-2xl overflow-hidden border-2 border-pink-400 shrink-0 shadow-md bg-stone-100">
               <Image
-                src={getAssetUrl("/fotononformal/Annisa Haura Salshabira-3.jpg")}
+                src={getAssetUrl("/fotoprfil.png")}
                 alt={personalInfo.fullName}
                 fill
-                className="object-cover object-top"
+                className="object-cover object-center"
                 sizes="120px"
                 unoptimized
                 priority
