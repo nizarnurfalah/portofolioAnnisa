@@ -687,7 +687,7 @@ export default function PortfolioPdfPage() {
                   </p>
                 </div>
                 <span className="text-[10px] font-bold text-stone-500">
-                  May 2024 – Oct 2024 (5 Months)
+                  Aug 2024 – Dec 2024 (5 Months)
                 </span>
               </div>
               <p className="text-[11px] text-stone-700 mb-2 leading-relaxed">
@@ -780,7 +780,7 @@ export default function PortfolioPdfPage() {
                   </p>
                 </div>
                 <span className="text-[10px] font-bold text-stone-500">
-                  Jan 2024 – Dec 2024 (1 Year)
+                  Mar 2024 – Mar 2025 (1 Year)
                 </span>
               </div>
               <div className="flex gap-3 items-center">
